@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap");
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.banner-wrapper {
+  background-image: url("../public/images/banner.png");
+  background-position: 0 20%;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bg-color {
+  background-color: #338573;
+}
+.text-color {
+  color: #338573;
+}
+
+.padding-wrapper > .relative > button > span {
+  padding-top: 0 !important;
+  padding: 0 15px;
+}
