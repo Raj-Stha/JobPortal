@@ -1,6 +1,5 @@
 import { useNavigate, useParams } from "react-router";
 import { useGetJobByCategoryQuery } from "../../features/jobApi";
-import { baseURL } from "../../constant/Constant";
 import { ScrollTop } from "../../components/ScrollTop";
 import Loading from "../../components/Loading";
 
@@ -56,9 +55,9 @@ const SingleCategory = () => {
                       onClick={() => nav(`/job/${job?._id}`)}
                     >
                       <div className="w-[20%] mxl:w-[25%] mmd:w-[22%]  msm:hidden ">
-                        <div className=" h-[75px] mmd:h-[65px]  ">
+                        <div className="">
                           <img
-                            src={`${baseURL}${job?.createdBy?.companyLogo}`}
+                            src={job?.createdBy?.companyLogo}
                             alt=""
                             className="w-[100%] h-[100%] object-cover rounded-md"
                           />

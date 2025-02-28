@@ -1,17 +1,13 @@
 import { useSelector } from "react-redux";
 import Piechart from "./Homepage/Piechart";
 import JobList from "./Homepage/JobList";
-import {
-  useGetCreatedJobQuery,
-  useGetHomepageQuery,
-} from "../../features/jobApi";
+import { useGetCreatedJobQuery } from "../../features/jobApi";
 import LineChart from "./Homepage/LineChart";
 import Loading from "../../components/Loading";
 
 const AdminDashboard = () => {
   const { token } = useSelector((store) => store.userInfo.userDetail);
   const { data, isLoading } = useGetCreatedJobQuery(token);
-  const { data: home, isLoading: isLoad } = useGetHomepageQuery();
   if (isLoading) {
     return (
       <div className="h-[85vh] py-[13%] mb-[3px] mmd:pt-[16%] msm:pt-[55%] msm:h-[89vh]">

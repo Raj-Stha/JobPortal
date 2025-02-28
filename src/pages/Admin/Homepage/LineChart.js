@@ -38,7 +38,6 @@ const LineChart = ({ data }) => {
     ],
   };
 
-  console.log(labels);
   return (
     <div className=" col-span-2 msm:col-span-1 f">
       <Line data={details}></Line>

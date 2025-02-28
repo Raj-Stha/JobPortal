@@ -1,5 +1,4 @@
 import { useGetJobByCompanyQuery } from "../../../features/jobApi";
-import { baseURL } from "../../../constant/Constant";
 import { useNavigate } from "react-router";
 import Loading from "../../../components/Loading";
 
@@ -23,9 +22,9 @@ const Company = () => {
                   className="flex items-center bg-gray-50 rounded-sm shadow-md py-3 px-3  space-x-5"
                   key={index}
                 >
-                  <div className="w-[125px] h-[85px]  ">
+                  <div className="w-[125px]   ">
                     <img
-                      src={`${baseURL}${job?.companyLogo}`}
+                      src={job?.companyLogo}
                       alt=""
                       className="w-[100%] h-[100%] object-cover rounded-md"
                     />

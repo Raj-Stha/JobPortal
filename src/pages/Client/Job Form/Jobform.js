@@ -9,7 +9,7 @@ import { useUpdateUserForJOBMutation } from "../../../features/userApi";
 
 const JobForm = ({ setPopup, jobID }) => {
   const [updateJob, { isLoading }] = useUpdateUserAndJobMutation();
-  const [updateUserJob, { isLoading: isload }] = useUpdateUserForJOBMutation();
+  const [updateUserJob] = useUpdateUserForJOBMutation();
   const location = useLocation();
   const { token } = useSelector((store) => store.userInfo.userDetail);
   const jobSchema = Yup.object().shape({
@@ -28,12 +28,38 @@ const JobForm = ({ setPopup, jobID }) => {
     validationSchema: jobSchema,
     onSubmit: async (value) => {
       try {
-        const form = new FormData();
-        form.append("fullName", value.fullName);
-        form.append("CV", value.cv);
-        form.append("jobID", jobID);
-        const result = await updateJob({ form, token }).unwrap();
-        await updateUserJob({ form, token }).unwrap();
+        const formData = new FormData();
+        // form.append("fullName", value.fullName);
+        // form.append("CV", value.cv);
+        // form.append("jobID", jobID);
+
+        formData.append("file", value.cv);
+        formData.append("upload_preset", "JobPortal");
+        formData.append("cloud_name", "ddvvgxnry");
+
+        const cloudinaryResponse = await fetch(
+          "https://api.cloudinary.com/v1_1/ddvvgxnry/image/upload",
+          {
+            method: "POST",
+            body: formData,
+          }
+        );
+
+        const cloudinaryData = await cloudinaryResponse.json();
+        const file = cloudinaryData.secure_url;
+
+        if (!file) {
+          return toast.error("Unable To Upload Image");
+        }
+
+        let details = {
+          fullName: value.fullName,
+          CV: file,
+          jobID: jobID,
+        };
+
+        const result = await updateJob({ details, token }).unwrap();
+        await updateUserJob({ details, token }).unwrap();
         if (result.status === "error") {
           toast.error(result.message);
         } else {

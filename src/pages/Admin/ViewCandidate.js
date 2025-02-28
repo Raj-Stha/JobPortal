@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import { useGetSingleJobDetailQuery } from "../../features/jobApi";
-import { baseURL } from "../../constant/Constant";
 import Loading from "../../components/Loading";
 
 const ViewCandidate = () => {
@@ -53,11 +52,7 @@ const ViewCandidate = () => {
                     {new Date(job.appliedDate).toDateString()}
                   </td>
                   <td className="px-7 py-4 msm:px-1 msm:py-2 msm:w-18">
-                    <a
-                      href={`${baseURL}${job.cv}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href={job.cv} target="_blank" rel="noreferrer">
                       {job.fullName} CV
                     </a>
                   </td>

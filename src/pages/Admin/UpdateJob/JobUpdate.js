@@ -12,7 +12,6 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
-import Loading from "../../../components/Loading";
 
 const JobUpdate = ({ data }) => {
   const { token } = useSelector((store) => store.userInfo.userDetail);
@@ -23,7 +22,7 @@ const JobUpdate = ({ data }) => {
 
   const nav = useNavigate();
 
-  const [updatePost, { isLoading }] = useUpdateJobPostMutation();
+  const [updatePost] = useUpdateJobPostMutation();
 
   const jobSchema = Yup.object().shape({
     jobTitle: Yup.string().required("Required"),
@@ -45,7 +44,6 @@ const JobUpdate = ({ data }) => {
     validationSchema: jobSchema,
     onSubmit: async (value) => {
       try {
-        console.log(value.jobType);
         let details = {
           jobID: data?.jobs?._id,
           jobTitle: value.jobTitle,
@@ -58,7 +56,6 @@ const JobUpdate = ({ data }) => {
           jobDescription: jobDesc,
         };
 
-        console.log(details);
         const result = await updatePost({ details, token }).unwrap();
         if (result.status === "success") {
           toast.success(result.message);

@@ -109,7 +109,7 @@ export const jobApi = createApi({
         headers: {
           Authorization: query.token,
         },
-        body: query.form,
+        body: query,
       }),
       invalidatesTags: ["Job"],
     }),

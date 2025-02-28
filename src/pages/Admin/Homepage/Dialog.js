@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 const PopUpBar = ({ popup, setPopup, jobID }) => {
   const { token } = useSelector((store) => store.userInfo.userDetail);
 
-  const [deleteJobPost, { isLoading }] = useDeleteJobPostMutation();
+  const [deleteJobPost] = useDeleteJobPostMutation();
 
   const deleteJob = async () => {
     setPopup(false);

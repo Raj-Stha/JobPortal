@@ -18,15 +18,8 @@ const AddJob = () => {
   const [startDate, setStartDate] = useState(new Date());
   const { token } = useSelector((store) => store.userInfo.userDetail);
   const nav = useNavigate();
-  const jobCategoriesList = [
-    "Information Technology",
-    "Accounting",
-    "Customer Service",
-    "Marketing",
-    "Electrician",
-  ];
 
-  const [addPost, { isLoading }] = useAddJobPostMutation();
+  const [addPost] = useAddJobPostMutation();
 
   const jobSchema = Yup.object().shape({
     jobTitle: Yup.string().required("Required"),

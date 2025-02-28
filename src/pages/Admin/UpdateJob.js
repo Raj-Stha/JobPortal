@@ -1,5 +1,4 @@
 import { useGetSingleJobDetailQuery } from "../../features/jobApi";
-import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 import JobUpdate from "./UpdateJob/JobUpdate";

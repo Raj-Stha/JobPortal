@@ -8,7 +8,6 @@ const AppliedJob = () => {
   const { token } = useSelector((store) => store.userInfo.userDetail);
 
   const { data, isLoading } = useGetClientDetailQuery(token);
-  console.log(data);
 
   useEffect(() => {}, [data]);
   const nav = useNavigate();

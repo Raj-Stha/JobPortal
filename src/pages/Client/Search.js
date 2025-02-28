@@ -1,12 +1,10 @@
 import { useNavigate, useParams } from "react-router";
 import { useGetSearchedJobQuery } from "../../features/jobApi";
-import { baseURL } from "../../constant/Constant";
 import Loading from "../../components/Loading";
 
 const Search = () => {
   const { jobName } = useParams();
   const { data, isLoading } = useGetSearchedJobQuery(jobName);
-  console.log(data);
   const nav = useNavigate();
   return (
     <>
@@ -40,9 +38,9 @@ const Search = () => {
                       onClick={() => nav(`/job/${job?._id}`)}
                     >
                       <div className="w-[20%] msm:hidden">
-                        <div className=" h-[75px] mmd:h-[60px]  ">
+                        <div className="">
                           <img
-                            src={`${baseURL}${job?.createdBy?.companyLogo}`}
+                            src={job?.createdBy?.companyLogo}
                             alt=""
                             className="w-[100%] h-[100%] object-cover rounded-md"
                           />

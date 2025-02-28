@@ -1,6 +1,5 @@
 import { useLocation, useNavigate, useParams } from "react-router";
 import { useGetJobDetailQuery } from "../../features/jobApi";
-import { baseURL } from "../../constant/Constant";
 import { useEffect, useState } from "react";
 import JobForm from "./Job Form/Jobform";
 import { useSelector } from "react-redux";
@@ -43,7 +42,7 @@ const JobDetail = () => {
               <div className=" items-center bg-gray-100 rounded-t-sm flex   py-4 space-x-5 px-4  msm:space-x-0">
                 <div className="pl-2 w-[15%] msm:hidden">
                   <img
-                    src={`${baseURL}${data?.detail?.createdBy?.companyLogo}`}
+                    src={data?.detail?.createdBy?.companyLogo}
                     alt=""
                     className=" w-[92%] object-cover"
                   />

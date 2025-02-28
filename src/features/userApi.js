@@ -45,12 +45,12 @@ export const userApi = createApi({
 
     updateUserForJOB: builder.mutation({
       query: (query) => ({
-        url: "/api/client/update-User",
+        url: "/api/client/update-user",
         method: "PATCH",
         headers: {
           Authorization: query.token,
         },
-        body: query.form,
+        body: query,
       }),
       invalidatesTags: ["User"],
     }),

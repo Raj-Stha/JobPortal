@@ -1,6 +1,4 @@
 import { useNavigate } from "react-router";
-import { useGetCreatedJobQuery } from "../../../features/jobApi";
-import { useSelector } from "react-redux";
 import { useState } from "react";
 import PopUpBar from "./Dialog";
 

@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from "react-router";
+import { Outlet } from "react-router";
 import Header from "./Header";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";
@@ -14,7 +14,6 @@ const RootLayout = () => {
 
   return (
     <div>
-      {" "}
       {decode && decode.isEmployee ? <AdminHeader /> : <Header />}
       <Outlet />
       <Footer />
